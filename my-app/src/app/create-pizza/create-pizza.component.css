@@ -1,0 +1,45 @@
+.example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+.example-radio-button {
+    margin: 5px;
+}
+
+.formFieldDiv{
+  width: 100%;
+}
+
+.mat-horizontal-content-container {
+  /*overflow: hidden;*/
+  padding: 0%;
+}
+
+mat-horizontal-stepper {
+  width: 100%;
+  padding: 0%;
+}
+
+mat-slider {
+  width: 100%;
+}
+
+.stepButtons {
+  float: right;
+}
+
+.matSelect {
+  display: inline;
+}
+
+
+.content {
+  padding: 16px;
+}
+
+.content > mat-card {
+  width: 200px;
+}
+

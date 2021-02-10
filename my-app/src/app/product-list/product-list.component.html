@@ -1,0 +1,36 @@
+<div class="general-margin">
+    <h1>Escoge una de nuestras pizzas</h1>
+
+    <div class="content">
+        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+            <div fxFlex="25%" *ngFor="let product of products">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title [title]="'Descripción ' + product.name">
+                            {{ product.name }}
+                        </mat-card-title>
+
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div *ngIf="product.description">
+                            {{ product.description }}
+                            <div *ngIf="product.price"> {{ product.price | currency }}</div>
+                        </div>
+                    </mat-card-content>
+
+                    <mat-card-actions>
+                        <button mat-raised-button color="accent" class="align-text-bottom"
+                            (click)="util.addPizza(product)">Añadir a
+                            mi pedido</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <h1>Crea tu propia pizza</h1>
+
+    <button mat-raised-button color="accent" [routerLink]="['/createPizza']" routerLinkActive="router-link-active"
+        id="createPizzaButton">Haz clic aquí para empezar a crear tu propia pizza</button>
+
+</div>

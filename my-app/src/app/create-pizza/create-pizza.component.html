@@ -1,0 +1,124 @@
+<div class="general-margin">
+
+
+    <h1>Crea tu propia pizza</h1>
+
+    <p>Escoge el tamaño y los diferentes ingredientes de tu pizza.</p>
+
+    <mat-horizontal-stepper linear>
+        <mat-step [stepControl]="formGroup1" [editable]="isEditable">
+            <form [formGroup]="formGroup1">
+                <ng-template matStepLabel>Elige un tamaño</ng-template>
+                <div class="formFieldDiv">
+                    <!-- Choose Size -->
+                    <mat-form-field appearance="fill" class="matSelect">
+                        <mat-label>Elige un tamaño</mat-label>
+                        <mat-select formControlName="sizeControl" required>
+                            <mat-option *ngFor="let size of sizes" [value]="size">{{ size.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- -->
+                </div>
+                <div class="stepButtons">
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="formGroup2" [editable]="isEditable">
+            <form [formGroup]="formGroup2">
+                <ng-template matStepLabel>Elige una salsa</ng-template>
+                <div class="formFieldDiv">
+                    <!-- Choose sauce -->
+                    <mat-label>Elige una de las salsas:</mat-label>
+                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                        formControlName="sauceControl" required>
+                        <mat-radio-button class="example-radio-button" *ngFor="let sauce of sauces" [value]="sauce">
+                            {{sauce.name}}
+                        </mat-radio-button>
+                    </mat-radio-group>
+                    <!-- -->
+                </div>
+                <div class="stepButtons">
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="formGroup3" [editable]="isEditable">
+            <form [formGroup]="formGroup3">
+                <ng-template matStepLabel>Elige cantidad de mozzarella</ng-template>
+                <div class="formFieldDiv">
+                    <!-- Choose mozzarella -->
+                    <mat-form-field appearance="fill" class="matSelect">
+                        <mat-label>Elige la cantidad de mozzarella que quieres para tu pizza.</mat-label>
+                        <mat-select formControlName="mozzarellaControl" required>
+                            <mat-option *ngFor="let mz of mozzarella" [value]="mz">{{ mz.name }}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <!-- -->
+                </div>
+                <div class="stepButtons">
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step [stepControl]="formGroup4" [editable]="isEditable" [optional]="isOptional">
+            <form [formGroup]="formGroup4">
+                <ng-template matStepLabel>Elige ingredientes</ng-template>
+                <div>
+                    <!-- Choose ingredients -->
+                    <mat-label>Elige los ingredientes para tu pizza entre los que te ofrecemos. Si no eliges ninguno se
+                        te añadirá por Defecto Jamón de York.</mat-label>
+                    <div class="content">
+                        <div fxLayout="row wrap" fxLayoutGap="16px grid">
+                            <div fxFlex="25%" *ngFor="let ing of ingredients">
+                                <mat-card class="ingredientCard">
+                                    <mat-card-header>
+                                        <mat-card-title>{{ ing.name }}</mat-card-title>
+                                    </mat-card-header>
+                                    <mat-card-content>
+                                        <p>Cantidad a añadir:</p>
+                                        <span>{{ ing.quantity }}</span>
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                        <button mat-icon-button class="removeButton" (click)="remove(ing)">
+                                            <mat-icon>remove</mat-icon>
+                                        </button>
+                                        <button mat-icon-button class="addButton" (click)="add(ing)">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+                                    </mat-card-actions>
+                                </mat-card>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- -->
+                </div>
+                <div class="stepButtons">
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button matStepperNext>Siguiente</button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step>
+            <ng-template matStepLabel>Finalizar</ng-template>
+
+            <p>¡Has creado tu propia pizza! ¡Enhorabuena!</p>
+            <p>El precio de su pizza es de {{ product.price | currency}}</p>
+            <p>Recuerda pulsar en 'Añadir a mi pedido' para añadir tu pizza personalizada a tu pedido actual.</p>
+            <div class="formFieldDiv">
+                <div class="stepButtons">
+                    <button mat-button matStepperPrevious>Atrás</button>
+                    <button mat-button [routerLink]="['/']" routerLinkActive="router-link-active"
+                        (click)="util.addPizza(product)">Añadir a mi
+                        pedido</button>
+                </div>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+
+</div>

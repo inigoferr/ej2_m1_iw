@@ -1,0 +1,14 @@
+/* Card Margins */
+.content {
+    padding: 16px;
+}
+  
+.content > mat-card {
+    width: 200px;
+}
+
+#createPizzaButton {
+    margin-left: 16px;
+    margin-bottom: 16px;
+}
+
