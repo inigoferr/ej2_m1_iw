@@ -27,6 +27,7 @@ import { MatTableModule } from '@angular/material/table';
 
 // Flex Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     TopBarComponent,
     ProductListComponent,
     CreatePizzaComponent,
-    OrderComponent
+    OrderComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
