@@ -6,6 +6,10 @@ tr.mat-footer-row {
   font-weight: bold;
 }
 
+.actionButtons {
+  margin: 8px;
+}
+
 * {
     padding: 16px;
 }
